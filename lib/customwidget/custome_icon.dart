@@ -8,21 +8,25 @@ class CustomIcon extends StatelessWidget {
   final IconData icon;
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        minimumSize: Size(30, 35),
-        padding: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+    return SizedBox(
+      width: 30,
+      height: 32,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          // Adjust the width and height here
+          padding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          backgroundColor: Colors.white.withOpacity(.05),
         ),
-        backgroundColor: Colors.white.withOpacity(.05),
-      ),
-      child: Center(
-        child: Icon(
-          icon,
-          size: 20,
-          color: Colors.white,
+        child: Center(
+          child: Icon(
+            icon,
+            size: 20,
+            color: Colors.white,
+          ),
         ),
       ),
     );

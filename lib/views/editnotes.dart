@@ -8,13 +8,20 @@ class EditNotes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10, top: 15, right: 10),
+    return Scaffold(
+        body: Padding(
+      padding: const EdgeInsets.only(left: 10, top: 30, right: 10),
       child: Column(
         children: [
-          CustomAppBar(title: "Edit Note", icon: Icons.save),
+          CustomAppBar(title: "Edit Note", icon: Icons.done),
+          SizedBox(
+            height: 16,
+          ),
           CustomTextField(
             hint: "title",
+          ),
+          SizedBox(
+            height: 16,
           ),
           CustomTextField(
             hint: "content",
@@ -22,6 +29,6 @@ class EditNotes extends StatelessWidget {
           )
         ],
       ),
-    );
+    ));
   }
 }

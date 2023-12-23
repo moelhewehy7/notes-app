@@ -19,7 +19,7 @@ class CustomContainer extends StatelessWidget {
             color: const Color.fromARGB(18, 255, 255, 255)),
         height: height,
         child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
           child: Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
