@@ -11,7 +11,7 @@ class CustomIcon extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(40, 50),
+        minimumSize: Size(30, 35),
         padding: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
@@ -19,12 +19,13 @@ class CustomIcon extends StatelessWidget {
         backgroundColor: Colors.white.withOpacity(.05),
       ),
       child: Ink(
-        width: 30,
-        height: 30,
+        padding: EdgeInsets.zero,
+        width: 25,
+        height: 25,
         child: Center(
           child: Icon(
             icon,
-            size: 25,
+            size: 20,
           ),
         ),
       ),
