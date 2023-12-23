@@ -18,15 +18,11 @@ class CustomIcon extends StatelessWidget {
         ),
         backgroundColor: Colors.white.withOpacity(.05),
       ),
-      child: Ink(
-        padding: EdgeInsets.zero,
-        width: 25,
-        height: 25,
-        child: Center(
-          child: Icon(
-            icon,
-            size: 20,
-          ),
+      child: Center(
+        child: Icon(
+          icon,
+          size: 20,
+          color: Colors.white,
         ),
       ),
     );
