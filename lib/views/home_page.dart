@@ -25,15 +25,16 @@ class HomePage extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 10, top: 15, right: 10),
+        padding: const EdgeInsets.only(left: 20, top: 15, right: 20),
         child: Column(
           children: [
             const SizedBox(
               height: 20,
             ),
-            const CustomAppBar(
+            CustomAppBar(
               title: "Notes",
               icon: Icons.search,
+              onPressed: () {},
             ),
             Expanded(
               child: MasonryGridView.builder(
@@ -45,8 +46,8 @@ class HomePage extends StatelessWidget {
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
                   List<double> heights = [
-                    300,
-                    150,
+                    250,
+                    200,
                   ];
                   return CustomContainer(
                     height: heights[index % heights.length],
