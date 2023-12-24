@@ -65,6 +65,7 @@ class _NoteformState extends State<Noteform> {
                 return formkey.currentState!.save();
               } else {
                 autovalidate = AutovalidateMode.always;
+                //ensures that the validators are triggered as the user interacts with the form fields
               }
             },
           ),
