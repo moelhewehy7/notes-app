@@ -21,14 +21,11 @@ class CustomTextField extends StatelessWidget {
       onSaved: onSaved,
       validator: (value) {
         if (value?.isEmpty ?? true) {
+          //and if value is not empty but null, it also returns Text("try again").
           return 'Field is required ';
         } else {
           return null;
         }
-        //value?.isEmpty: The ?. operator, known as the null-aware operator, is used for optional chaining.
-        // If value is null, this expression returns null immediately without trying to call isEmpty(). If value is not null,
-        //it calls the isEmpty() method on value.
-        //  This method checks if the string is empty and returns true if it is.
       },
       cursorColor: const Color(0xff62FCD7),
       maxLines: maxLines,
