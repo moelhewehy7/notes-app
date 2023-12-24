@@ -4,7 +4,7 @@ import '../views/editnotes.dart';
 import 'custome_icon.dart';
 
 class CustomContainer extends StatelessWidget {
-  const CustomContainer({Key? key, required this.height});
+  const CustomContainer({super.key, required this.height});
 
   final double height;
 
@@ -13,7 +13,7 @@ class CustomContainer extends StatelessWidget {
     return GestureDetector(
       onTap: () =>
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return EditNotes();
+        return const EditNotes();
       })),
       child: Container(
         decoration: BoxDecoration(
@@ -21,7 +21,7 @@ class CustomContainer extends StatelessWidget {
           color: const Color.fromARGB(18, 255, 255, 255),
         ),
         height: height,
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +29,7 @@ class CustomContainer extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Flutter widget",
                   // Ensure only a single line is displayed
                   style: TextStyle(
@@ -42,9 +42,9 @@ class CustomContainer extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 4), // Adjust spacing as needed
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
+            const SizedBox(height: 4), // Adjust spacing as needed
+            const Padding(
+              padding: EdgeInsets.only(right: 10),
               child: Text(
                 "build your career with Mohamed Elhewehy",
                 overflow: TextOverflow.ellipsis,
@@ -55,8 +55,8 @@ class CustomContainer extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 8), // Adjust spacing as needed
-            Text("November 12"),
+            const SizedBox(height: 8), // Adjust spacing as needed
+            const Text("November 12"),
           ],
         ),
       ),

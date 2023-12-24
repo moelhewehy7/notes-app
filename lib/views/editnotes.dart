@@ -21,16 +21,16 @@ class EditNotes extends StatelessWidget {
             icon: Icons.done,
             onPressed: () {},
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
-          CustomTextField(
+          const CustomTextField(
             hint: "title",
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
-          CustomTextField(
+          const CustomTextField(
             hint: "content",
             maxLines: 5,
           )
