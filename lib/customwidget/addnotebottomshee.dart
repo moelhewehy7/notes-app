@@ -60,7 +60,7 @@ class _NoteformState extends State<Noteform> {
             height: 32,
           ),
           CustomButton(
-            onTap: () {
+            onpressed: () {
               if (formkey.currentState!.validate()) {
                 return formkey.currentState!.save();
               } else {
@@ -77,3 +77,7 @@ class _NoteformState extends State<Noteform> {
     );
   }
 }
+// SpinKitCircle(
+//                                 color: Color.fromARGB(255, 56, 103, 128),
+//                                 size: 20.0,
+//                               );

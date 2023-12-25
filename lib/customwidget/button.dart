@@ -1,33 +1,22 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, this.onTap});
-  final void Function()? onTap;
+  const CustomButton({super.key, this.onpressed});
+  final void Function()? onpressed;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 45, // Takes the width of the screen
-        decoration: BoxDecoration(
-          color: const Color(0xff62FCD7),
-          borderRadius:
-              BorderRadius.circular(8.0), // Optional: Adds rounded corners
-          border: Border.all(color: Colors.black), // Optional: Adds a border
+    return ElevatedButton(
+        onPressed: onpressed,
+        child: Text(
+          "Save",
+          style: TextStyle(
+              color: Colors.black, fontSize: 20, fontWeight: FontWeight.w400),
         ),
-        child: Center(
-          child: const Text(
-            'Save',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
-    );
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xff62FCD7),
+            fixedSize: Size(MediaQuery.of(context).size.width,
+                40), // Change the button size here
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10))));
   }
 }
