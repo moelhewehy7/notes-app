@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +9,7 @@ import '../constants.dart';
 import 'button.dart';
 import 'textformfield.dart';
 
+// ignore: must_be_immutable
 class Noteform extends StatelessWidget {
   Noteform({
     super.key,
