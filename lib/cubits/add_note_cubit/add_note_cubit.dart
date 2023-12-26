@@ -10,10 +10,12 @@ class AddNotesCubit extends Cubit<AddNotesState> {
 
   addnote(NoteModel note) async {
     emit(AddNotesLoading());
+    await Future.delayed(Duration(
+        milliseconds: 1000)); //to assure that loading has a chance to display
     try {
       var notebox = Hive.box<NoteModel>(Knotesbox);
-      emit(AddNotesSuccss());
       await notebox.add(note);
+      emit(AddNotesSuccss());
     } on Exception catch (e) {
       emit(AddNotesFailure(errmessage: e.toString()));
       // TODO
