@@ -11,9 +11,17 @@ class AddNoteBottomSheet extends StatelessWidget {
     return BlocProvider(
       //we used BlocProvider her to use less resources and check bloc observer prints u will see it open when i open modal sheet and close when i close it
       create: (context) => AddNotesCubit(),
-      child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: SingleChildScrollView(child: Noteform())),
+      child: BlocBuilder<AddNotesCubit, AddNotesState>(
+        builder: (context, state) {
+          return AbsorbPointer(
+            absorbing: state is AddNotesLoading ? true : false,
+            // Using the ternary operator (? :) to conditionally set the value is concise and effective
+            child: Padding(
+                padding: EdgeInsets.only(right: 16, left: 16, bottom: 16),
+                child: SingleChildScrollView(child: Noteform())),
+          );
+        },
+      ),
     );
   }
 }

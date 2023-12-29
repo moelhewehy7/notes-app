@@ -33,7 +33,7 @@ class CustomContainer extends StatelessWidget {
                   "Flutter widget",
                   // Ensure only a single line is displayed
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 16,
                   ),
                 ),
                 CustomIcon(
