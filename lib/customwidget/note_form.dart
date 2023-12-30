@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:note_app/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 
 import '../constants.dart';
@@ -59,6 +60,7 @@ class _NoteformState extends State<Noteform> {
             listener: (context, state) {
               if (state is AddNotesSuccss) {
                 // Handle successful note addition (e.g., show success message or navigate)
+                BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text(
