@@ -9,11 +9,16 @@ import 'button.dart';
 import 'textformfield.dart';
 
 // ignore: must_be_immutable
-class Noteform extends StatelessWidget {
+class Noteform extends StatefulWidget {
   Noteform({
     super.key,
   });
 
+  @override
+  State<Noteform> createState() => _NoteformState();
+}
+
+class _NoteformState extends State<Noteform> {
   AutovalidateMode autovalidate = AutovalidateMode.disabled;
 
   final GlobalKey<FormState> formkey = GlobalKey();
@@ -26,6 +31,7 @@ class Noteform extends StatelessWidget {
       autovalidateMode: autovalidate,
       key: formkey,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(
             height: 32,

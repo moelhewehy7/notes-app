@@ -17,7 +17,10 @@ class AddNoteBottomSheet extends StatelessWidget {
             absorbing: state is AddNotesLoading ? true : false,
             // Using the ternary operator (? :) to conditionally set the value is concise and effective
             child: Padding(
-                padding: EdgeInsets.only(right: 16, left: 16, bottom: 16),
+                padding: EdgeInsets.only(
+                    right: 16,
+                    left: 16,
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: SingleChildScrollView(child: Noteform())),
           );
         },

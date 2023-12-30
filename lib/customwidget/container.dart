@@ -21,7 +21,7 @@ class CustomContainer extends StatelessWidget {
           color: const Color.fromARGB(18, 255, 255, 255),
         ),
         height: height,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +30,9 @@ class CustomContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  "Flutter widget",
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
+                  "Flutter ",
                   // Ensure only a single line is displayed
                   style: TextStyle(
                     fontSize: 16,

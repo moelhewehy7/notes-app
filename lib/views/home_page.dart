@@ -6,62 +6,77 @@ import 'package:note_app/customwidget/addnotebottomshee.dart';
 
 import '../customwidget/container.dart';
 import '../customwidget/custom_appbar.dart';
+import '../models/note_model.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubit(),
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-                isScrollControlled: true,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                context: context,
-                builder: (context) {
-                  return const AddNoteBottomSheet();
-                });
-          },
-          child: const Icon(Icons.add),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 20, top: 15, right: 20),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+              isScrollControlled: true,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
               ),
-              CustomAppBar(
-                title: "Notes",
-                icon: Icons.search,
-                onPressed: () {},
-              ),
-              Expanded(
-                child: MasonryGridView.builder(
-                  gridDelegate:
-                      const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2),
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
-                  itemCount: 10,
-                  itemBuilder: (BuildContext context, int index) {
-                    List<double> heights = [
-                      250,
-                      200,
-                    ];
-                    return CustomContainer(
-                      height: heights[index % heights.length],
-                    );
-                  },
-                ),
-              )
-            ],
-          ),
+              context: context,
+              builder: (context) {
+                return const AddNoteBottomSheet();
+              });
+        },
+        child: const Icon(Icons.add),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 20, top: 15, right: 20),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            CustomAppBar(
+              title: "Notes",
+              icon: Icons.search,
+              onPressed: () {},
+            ),
+            BlocBuilder<NotesCubit, NotesState>(
+              builder: (context, state) {
+                List<NoteModel> notes =
+                    BlocProvider.of<NotesCubit>(context).notes ?? [];
+                return Expanded(
+                  child: MasonryGridView.builder(
+                    gridDelegate:
+                        const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
+                    itemCount: notes.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      List<double> heights = [
+                        250,
+                        200,
+                      ];
+                      return CustomContainer(
+                        height: heights[index % heights.length],
+                      );
+                    },
+                  ),
+                );
+              },
+            )
+          ],
         ),
       ),
     );
