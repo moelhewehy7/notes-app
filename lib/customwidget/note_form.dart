@@ -10,7 +10,7 @@ import 'textformfield.dart';
 
 // ignore: must_be_immutable
 class Noteform extends StatefulWidget {
-  Noteform({
+  const Noteform({
     super.key,
   });
 

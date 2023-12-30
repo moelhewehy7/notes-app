@@ -69,6 +69,7 @@ class _HomePageState extends State<HomePage> {
                         200,
                       ];
                       return CustomContainer(
+                        note: notes[index],
                         height: heights[index % heights.length],
                       );
                     },
