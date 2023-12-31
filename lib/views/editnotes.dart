@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:note_app/customwidget/custom_appbar.dart';
+import 'package:note_app/models/note_model.dart';
 
 import '../customwidget/textformfield.dart';
 
-class EditNotes extends StatelessWidget {
-  const EditNotes({super.key});
+class EditNotes extends StatefulWidget {
+  const EditNotes({super.key, required this.noteModel});
+  final NoteModel noteModel;
+  @override
+  State<EditNotes> createState() => _EditNotesState();
+}
 
+String? title, content;
+
+class _EditNotesState extends State<EditNotes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,19 +29,40 @@ class EditNotes extends StatelessWidget {
           CustomAppBar(
             title: "Edit Note",
             icon: Icons.done,
-            onPressed: () {},
+            onPressed: () {
+              widget.noteModel.title = title ?? widget.noteModel.title;
+              widget.noteModel.content = content ?? widget.noteModel.content;
+              widget.noteModel.save();
+              BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                    'Note updated successfully!',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 48, 48, 48),
+                ),
+              );
+              Navigator.pop(context);
+            },
           ),
           const SizedBox(
             height: 16,
           ),
-          const CustomTextField(
-            hint: "title",
+          CustomTextField(
+            onChanged: (value) {
+              title = value;
+            },
+            initialValue: widget.noteModel!.title,
           ),
           const SizedBox(
             height: 16,
           ),
-          const CustomTextField(
-            hint: "content",
+          CustomTextField(
+            onChanged: (value) {
+              content = value;
+            },
+            initialValue: widget.noteModel!.content,
             maxLines: 5,
           )
         ],

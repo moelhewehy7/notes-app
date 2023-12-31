@@ -9,9 +9,9 @@ part 'note_model.g.dart';
 class NoteModel extends HiveObject {
   @HiveField(0)
   //uique per class, Each field that is going to be stored needs a unique HiveField identifier.
-  final String title;
+  String title;
   @HiveField(1)
-  final String content;
+  String content;
   @HiveField(2)
   final String date;
   @HiveField(3)

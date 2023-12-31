@@ -14,12 +14,13 @@ class CustomContainer extends StatelessWidget {
   final double height;
   final NoteModel note;
   late String text = note.title;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () =>
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return const EditNotes();
+        return EditNotes(noteModel: note);
       })),
       child: Container(
         decoration: BoxDecoration(
@@ -38,7 +39,7 @@ class CustomContainer extends StatelessWidget {
                 Text(
                   overflow: TextOverflow.ellipsis,
 
-                  text.substring(0, 3),
+                  text.length <= 12 ? text : '${text.substring(0, 12)}...',
                   // Ensure only a single line is displayed
                   style: const TextStyle(
                     fontSize: 16,

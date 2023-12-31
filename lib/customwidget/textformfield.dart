@@ -5,13 +5,15 @@ import '../constants.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
       {super.key,
-      required this.hint,
+      this.hint,
       this.maxLines = 1,
       this.onSaved,
-      this.onChanged});
+      this.onChanged,
+      this.initialValue});
 
-  final String hint;
+  final String? hint;
   final int maxLines;
+  final String? initialValue;
 
   final void Function(String?)? onSaved;
 
@@ -19,6 +21,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       onChanged: onChanged,
       onSaved: onSaved,
       validator: (value) {
