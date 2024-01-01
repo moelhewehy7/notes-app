@@ -160,14 +160,14 @@ class ColorListView extends StatefulWidget {
 int currentIndex = 0;
 List<Color> noteColors = [
   const Color(0xFF546E7A), // Dark Blue Gray
-  Colors.blueGrey[300]!, // Blue Grey
-  const Color.fromARGB(255, 132, 99, 0), // Amber
-  Colors.deepOrange[400]!, // Deep Orange
-  Colors.purple[400]!, // Purple
-  Colors.brown[400]!, // Brown
-  Colors.blueGrey[800]!, // Darker shades of Blue Grey
-  Colors.indigo[800]!, // Darker shades of Indigo
-  Colors.red[800]!, // Darker shades of Red
+  Color(0xFF073A53), // Blue Grey
+  Color(0xFF846300), // Amber
+  Color(0xFFFF7043), // Deep Orange
+  Color(0xFFAB47BC), // Purple
+  Color(0xFF8D6E63), // Brown
+  Color(0xFF37474F), // Darker shades of Blue Grey
+  Color.fromARGB(255, 30, 40, 117), // Darker shades of Indigo
+  Color(0xFFC62828), // Darker shades of Red
 ];
 
 class _ColorListViewState extends State<ColorListView> {
