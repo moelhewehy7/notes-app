@@ -54,11 +54,11 @@ class _NoteformState extends State<Noteform> {
             hint: 'Content',
           ),
           const SizedBox(
-            height: 32,
+            height: 15,
           ),
-          ColorListView(),
-          SizedBox(
-            height: 32,
+          const ColorListView(),
+          const SizedBox(
+            height: 15,
           ),
           BlocConsumer<AddNotesCubit, AddNotesState>(
             listener: (context, state) {
@@ -126,20 +126,51 @@ class _NoteformState extends State<Noteform> {
 }
 
 class ColorItem extends StatelessWidget {
-  const ColorItem({super.key});
-
+  const ColorItem({super.key, required this.isActive, required this.color});
+  final bool isActive;
+  final Color color;
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 35,
-      backgroundColor: Colors.blue,
-    );
+    return isActive
+        ? CircleAvatar(
+            backgroundColor: Colors.white,
+            radius: 32,
+            child: CircleAvatar(
+              radius: 30,
+              backgroundColor: color,
+            ),
+          )
+        : CircleAvatar(
+            radius: 30,
+            backgroundColor: color,
+          );
   }
 }
 
-class ColorListView extends StatelessWidget {
+class ColorListView extends StatefulWidget {
   const ColorListView({super.key});
 
+  @override
+  State<ColorListView> createState() => _ColorListViewState();
+}
+
+int CurrentIndex = 0;
+List<Color> noteColors = [
+  Color(0xFFE48989)!, // Light gray
+  Colors.blue[200]!, // Light blue
+  Colors.green[200]!, // Light green
+  Colors.purple[200]!, // Light purple
+  Colors.blueAccent, // Blue accent
+  Colors.greenAccent, // Green accent
+  Colors.amberAccent, // Amber accent
+  Colors.indigoAccent, // Indigo accent
+  Colors.blue[900]!, // Darker shades of blue
+  Colors.green[800]!, // Darker shades of green
+  Colors.deepPurple, // Deep purple
+  Colors.red[800]!, // Darker shades of red
+];
+
+class _ColorListViewState extends State<ColorListView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -148,7 +179,20 @@ class ColorListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
-          return ColorItem();
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: 5),
+            child: GestureDetector(
+              onTap: () {
+                CurrentIndex = index;
+                setState(() {});
+              },
+              child: ColorItem(
+                color: noteColors[index],
+                isActive: CurrentIndex ==
+                    index, //means it will be white if for the index numbver
+              ),
+            ),
+          );
         },
       ),
     );
