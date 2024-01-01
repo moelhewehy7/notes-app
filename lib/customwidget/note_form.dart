@@ -67,6 +67,7 @@ class _NoteformState extends State<Noteform> {
                 BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
+                    duration: Duration(milliseconds: 800),
                     content: Text(
                       'Note added successfully!',
                       style: TextStyle(color: Colors.white),
@@ -79,6 +80,7 @@ class _NoteformState extends State<Noteform> {
                 // Handle error (e.g., display error message)
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
+                    duration: Duration(milliseconds: 800),
                     content: Text(
                       state.errmessage,
                       style: const TextStyle(color: Colors.white),
@@ -189,7 +191,7 @@ class _ColorListViewState extends State<ColorListView> {
               child: ColorItem(
                 color: noteColors[index],
                 isActive: currentIndex ==
-                    index, //means it will be white if for the index numbver
+                    index, //means it will be white if for the index numbuer
               ),
             ),
           );
