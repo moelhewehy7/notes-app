@@ -56,6 +56,10 @@ class _NoteformState extends State<Noteform> {
           const SizedBox(
             height: 32,
           ),
+          ColorListView(),
+          SizedBox(
+            height: 32,
+          ),
           BlocConsumer<AddNotesCubit, AddNotesState>(
             listener: (context, state) {
               if (state is AddNotesSuccss) {
@@ -116,6 +120,36 @@ class _NoteformState extends State<Noteform> {
             height: 16,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ColorItem extends StatelessWidget {
+  const ColorItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      radius: 35,
+      backgroundColor: Colors.blue,
+    );
+  }
+}
+
+class ColorListView extends StatelessWidget {
+  const ColorListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 32 * 2,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 10,
+        itemBuilder: (BuildContext context, int index) {
+          return ColorItem();
+        },
       ),
     );
   }

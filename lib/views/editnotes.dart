@@ -53,7 +53,7 @@ class _EditNotesState extends State<EditNotes> {
             onChanged: (value) {
               title = value;
             },
-            initialValue: widget.noteModel!.title,
+            initialValue: widget.noteModel.title,
           ),
           const SizedBox(
             height: 16,
@@ -62,7 +62,7 @@ class _EditNotesState extends State<EditNotes> {
             onChanged: (value) {
               content = value;
             },
-            initialValue: widget.noteModel!.content,
+            initialValue: widget.noteModel.content,
             maxLines: 5,
           )
         ],
