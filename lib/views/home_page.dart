@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.only(left: 20, top: 15, right: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(
               height: 20,
@@ -60,23 +61,26 @@ class _HomePageState extends State<HomePage> {
                     gridDelegate:
                         const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2),
-                    crossAxisSpacing: 5,
-                    mainAxisSpacing: 5,
+                    crossAxisSpacing: 10,
+                    physics: const BouncingScrollPhysics(),
                     itemCount: notes.length,
                     itemBuilder: (BuildContext context, int index) {
                       List<double> heights = [
                         250,
                         200,
                       ];
-                      return CustomContainer(
-                        note: notes[index],
-                        height: heights[index % heights.length],
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: CustomContainer(
+                          note: notes[index],
+                          height: heights[index % heights.length],
+                        ),
                       );
                     },
                   ),
                 );
               },
-            )
+            ),
           ],
         ),
       ),

@@ -102,7 +102,8 @@ class _NoteformState extends State<Noteform> {
                       var notemodel = NoteModel(
                         title: title!,
                         content: content!,
-                        color: Colors.blue.value,
+                        color:
+                            BlocProvider.of<AddNotesCubit>(context).color.value,
                         date: DateTime.now().toString(),
                       );
                       BlocProvider.of<AddNotesCubit>(context)
@@ -154,20 +155,17 @@ class ColorListView extends StatefulWidget {
   State<ColorListView> createState() => _ColorListViewState();
 }
 
-int CurrentIndex = 0;
+int currentIndex = 0;
 List<Color> noteColors = [
-  Color(0xFFE48989)!, // Light gray
-  Colors.blue[200]!, // Light blue
-  Colors.green[200]!, // Light green
-  Colors.purple[200]!, // Light purple
-  Colors.blueAccent, // Blue accent
-  Colors.greenAccent, // Green accent
-  Colors.amberAccent, // Amber accent
-  Colors.indigoAccent, // Indigo accent
-  Colors.blue[900]!, // Darker shades of blue
-  Colors.green[800]!, // Darker shades of green
-  Colors.deepPurple, // Deep purple
-  Colors.red[800]!, // Darker shades of red
+  const Color(0xFF546E7A), // Dark Blue Gray
+  Colors.blueGrey[300]!, // Blue Grey
+  const Color.fromARGB(255, 132, 99, 0), // Amber
+  Colors.deepOrange[400]!, // Deep Orange
+  Colors.purple[400]!, // Purple
+  Colors.brown[400]!, // Brown
+  Colors.blueGrey[800]!, // Darker shades of Blue Grey
+  Colors.indigo[800]!, // Darker shades of Indigo
+  Colors.red[800]!, // Darker shades of Red
 ];
 
 class _ColorListViewState extends State<ColorListView> {
@@ -177,18 +175,20 @@ class _ColorListViewState extends State<ColorListView> {
       height: 32 * 2,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: noteColors.length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: GestureDetector(
               onTap: () {
-                CurrentIndex = index;
+                currentIndex = index;
+                BlocProvider.of<AddNotesCubit>(context).color =
+                    noteColors[index];
                 setState(() {});
               },
               child: ColorItem(
                 color: noteColors[index],
-                isActive: CurrentIndex ==
+                isActive: currentIndex ==
                     index, //means it will be white if for the index numbver
               ),
             ),

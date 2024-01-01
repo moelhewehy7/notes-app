@@ -9,7 +9,7 @@ class CustomIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 38,
-      height: 35,
+      height: 38,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
