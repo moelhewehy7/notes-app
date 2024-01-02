@@ -104,8 +104,7 @@ class _NoteformState extends State<Noteform> {
                       var notemodel = NoteModel(
                         title: title!,
                         content: content!,
-                        color:
-                            BlocProvider.of<AddNotesCubit>(context).color.value,
+                        color: Colors.red.value,
                         date: DateTime.now().toString(),
                       );
                       BlocProvider.of<AddNotesCubit>(context)
