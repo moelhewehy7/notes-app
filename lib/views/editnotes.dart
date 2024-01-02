@@ -66,7 +66,7 @@ class _EditNotesState extends State<EditNotes> {
             initialValue: widget.noteModel.content,
             maxLines: 5,
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           EditColorListView(noteModel: widget.noteModel)
@@ -120,6 +120,7 @@ class _ColorListViewState extends State<EditColorListView> {
     Colors.indigo[800]!, // Darker shades of Indigo
     Colors.red[800]!, // Darker shades of Red
   ];
+  @override
   void initState() {
     currentIndex = noteColors.indexOf(Color(widget.noteModel.color));
     super.initState();

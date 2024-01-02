@@ -4,7 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:note_app/customwidget/addnotebottomshee.dart';
 
-import '../customwidget/container.dart';
+import '../customwidget/custom_container.dart';
 import '../customwidget/custom_appbar.dart';
 import '../models/note_model.dart';
 

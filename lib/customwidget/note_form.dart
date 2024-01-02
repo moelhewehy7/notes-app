@@ -80,7 +80,7 @@ class _NoteformState extends State<Noteform> {
                 // Handle error (e.g., display error message)
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    duration: Duration(milliseconds: 800),
+                    duration: const Duration(milliseconds: 800),
                     content: Text(
                       state.errmessage,
                       style: const TextStyle(color: Colors.white),
@@ -159,14 +159,14 @@ class ColorListView extends StatefulWidget {
 int currentIndex = 0;
 List<Color> noteColors = [
   const Color(0xFF546E7A), // Dark Blue Gray
-  Color(0xFF073A53), // Blue Grey
-  Color(0xFF846300), // Amber
-  Color(0xFFFF7043), // Deep Orange
-  Color(0xFFAB47BC), // Purple
-  Color(0xFF8D6E63), // Brown
-  Color(0xFF37474F), // Darker shades of Blue Grey
-  Color.fromARGB(255, 30, 40, 117), // Darker shades of Indigo
-  Color(0xFFC62828), // Darker shades of Red
+  const Color(0xFF073A53), // Blue Grey
+  const Color(0xFF846300), // Amber
+  const Color(0xFFFF7043), // Deep Orange
+  const Color(0xFFAB47BC), // Purple
+  const Color(0xFF8D6E63), // Brown
+  const Color(0xFF37474F), // Darker shades of Blue Grey
+  const Color.fromARGB(255, 30, 40, 117), // Darker shades of Indigo
+  const Color(0xFFC62828), // Darker shades of Red
 ];
 
 class _ColorListViewState extends State<ColorListView> {
@@ -190,7 +190,7 @@ class _ColorListViewState extends State<ColorListView> {
               child: ColorItem(
                 color: noteColors[index],
                 isActive: currentIndex ==
-                    index, //means it will be white if for the index numbuer
+                    index, //means it will be white if index numbuer= curent one
               ),
             ),
           );
