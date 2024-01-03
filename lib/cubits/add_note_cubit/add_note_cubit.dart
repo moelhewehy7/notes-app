@@ -13,7 +13,7 @@ class AddNotesCubit extends Cubit<AddNotesState> {
     emit(AddNotesLoading());
     await Future.delayed(const Duration(
         milliseconds: 1000)); //to assure that loading has a chance to display
-    note.color = color.value;
+
     try {
       var notebox = Hive.box<NoteModel>(knotesbox);
       await notebox.add(note);

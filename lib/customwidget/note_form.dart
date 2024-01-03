@@ -104,7 +104,9 @@ class _NoteformState extends State<Noteform> {
                       var notemodel = NoteModel(
                         title: title!,
                         content: content!,
-                        color: Colors.red.value,
+                        color: BlocProvider.of<AddNotesCubit>(context)
+                            .color
+                            .value, //or note.color = color.value; in add note cubit
                         date: DateTime.now().toString(),
                       );
                       BlocProvider.of<AddNotesCubit>(context)
@@ -190,7 +192,7 @@ class _ColorListViewState extends State<ColorListView> {
               child: ColorItem(
                 color: noteColors[index],
                 isActive: currentIndex ==
-                    index, //means it will be white if index numbuer= curent one
+                    index, //means it will be white if index numbuer= current one
               ),
             ),
           );
