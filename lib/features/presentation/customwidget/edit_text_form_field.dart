@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-
-class CustomTextField extends StatelessWidget {
-  const CustomTextField(
+class EditCustomTextField extends StatelessWidget {
+  const EditCustomTextField(
       {super.key,
       this.hint,
       this.maxLines = 1,
@@ -33,23 +31,11 @@ class CustomTextField extends StatelessWidget {
         }
       },
       cursorColor: const Color(0xff62FCD7),
-      maxLines: maxLines,
+      maxLines: null,
       decoration: InputDecoration(
+        border: InputBorder.none,
         hintText: hint,
-        border: buildBorder(),
-        enabledBorder: buildBorder(),
-        focusedBorder: buildBorder(kcollor),
       ),
     );
-  }
-
-  OutlineInputBorder buildBorder([color]) {
-    return OutlineInputBorder(
-        borderRadius: BorderRadius.circular(
-          8,
-        ),
-        borderSide: BorderSide(
-          color: color ?? Colors.white,
-        ));
   }
 }

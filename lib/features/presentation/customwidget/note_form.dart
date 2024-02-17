@@ -3,11 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:note_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
-import 'package:note_app/models/note_model.dart';
-
-import '../constants.dart';
+import 'package:note_app/features/presentation/customwidget/add_text_form_field.dart';
+import '../../../constants.dart';
+import '../../../data/models/note_model.dart';
 import 'button.dart';
-import 'textformfield.dart';
 
 // ignore: must_be_immutable
 class Noteform extends StatefulWidget {
@@ -37,7 +36,7 @@ class _NoteformState extends State<Noteform> {
           const SizedBox(
             height: 32,
           ),
-          CustomTextField(
+          AddCustomTextField(
             onSaved: (value) {
               title = value;
             },
@@ -46,7 +45,7 @@ class _NoteformState extends State<Noteform> {
           const SizedBox(
             height: 16,
           ),
-          CustomTextField(
+          AddCustomTextField(
             onSaved: (value) {
               content = value;
             },

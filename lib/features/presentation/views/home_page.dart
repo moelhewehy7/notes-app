@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
-import 'package:note_app/customwidget/addnotebottomshee.dart';
+import 'package:note_app/features/presentation/customwidget/addnotebottomshee.dart';
 
+import '../../../data/models/note_model.dart';
 import '../customwidget/custom_container.dart';
 import '../customwidget/custom_appbar.dart';
-import '../models/note_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,6 +24,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -66,8 +69,8 @@ class _HomePageState extends State<HomePage> {
                     itemCount: notes.length,
                     itemBuilder: (BuildContext context, int index) {
                       List<double> heights = [
-                        250,
-                        200,
+                        height * 0.3,
+                        height * 0.25,
                       ];
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 10),

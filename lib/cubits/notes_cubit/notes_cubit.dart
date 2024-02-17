@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:hive/hive.dart';
 
 import '../../constants.dart';
-import '../../models/note_model.dart';
+import '../../data/models/note_model.dart';
 
 part 'notes_state.dart';
 

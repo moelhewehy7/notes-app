@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/note_model.dart';
+import '../../../data/models/note_model.dart';
 
 class ColorItem extends StatelessWidget {
   const ColorItem({super.key, required this.isActive, required this.color});

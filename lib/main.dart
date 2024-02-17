@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
-import 'package:note_app/models/note_model.dart';
-import 'package:note_app/views/home_page.dart';
-import 'package:note_app/views/simpleblocobserver.dart';
+import 'package:note_app/features/presentation/views/home_page.dart';
+import 'package:note_app/features/presentation/views/simpleblocobserver.dart';
 
 import 'constants.dart';
+import 'data/models/note_model.dart';
 
 void main() async {
   await Hive.initFlutter(); //dontforget hive flutter not just hive

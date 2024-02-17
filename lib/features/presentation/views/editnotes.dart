@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
-import 'package:note_app/customwidget/custom_appbar.dart';
-import 'package:note_app/models/note_model.dart';
-
+import 'package:note_app/features/presentation/customwidget/custom_appbar.dart';
+import 'package:note_app/features/presentation/customwidget/edit_text_form_field.dart';
+import '../../../data/models/note_model.dart';
 import '../customwidget/editcolorlistview.dart';
-import '../customwidget/textformfield.dart';
 
 class EditNotes extends StatefulWidget {
   const EditNotes({super.key, required this.noteModel});
@@ -21,7 +20,7 @@ class _EditNotesState extends State<EditNotes> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-      padding: const EdgeInsets.only(left: 20, top: 15, right: 20),
+      padding: const EdgeInsets.only(left: 20, top: 15, right: 20, bottom: 15),
       child: Column(
         children: [
           const SizedBox(
@@ -51,21 +50,25 @@ class _EditNotesState extends State<EditNotes> {
           const SizedBox(
             height: 16,
           ),
-          CustomTextField(
+          EditCustomTextField(
+            hint: "Title",
             onChanged: (value) {
               title = value;
             },
             initialValue: widget.noteModel.title,
           ),
           const SizedBox(
-            height: 16,
+            height: 8,
           ),
-          CustomTextField(
-            onChanged: (value) {
-              content = value;
-            },
-            initialValue: widget.noteModel.content,
-            maxLines: 5,
+          Expanded(
+            child: EditCustomTextField(
+              hint: "Start Typing",
+              onChanged: (value) {
+                content = value;
+              },
+              initialValue: widget.noteModel.content,
+              maxLines: 5,
+            ),
           ),
           const SizedBox(
             height: 16,
