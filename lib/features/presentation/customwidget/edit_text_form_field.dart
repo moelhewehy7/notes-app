@@ -7,13 +7,15 @@ class EditCustomTextField extends StatelessWidget {
       this.maxLines = 1,
       this.onSaved,
       this.onChanged,
-      this.initialValue});
+      this.initialValue,
+      this.fontSize = 16});
 
   final String? hint;
   final int maxLines;
   final String? initialValue;
 
   final void Function(String?)? onSaved;
+  final double fontSize;
 
   final Function(String)? onChanged;
   @override
@@ -36,6 +38,7 @@ class EditCustomTextField extends StatelessWidget {
         border: InputBorder.none,
         hintText: hint,
       ),
+      style: TextStyle(fontSize: fontSize),
     );
   }
 }

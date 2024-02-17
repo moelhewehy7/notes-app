@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:note_app/features/presentation/customwidget/custom_appbar.dart';
 import 'package:note_app/features/presentation/customwidget/edit_text_form_field.dart';
@@ -22,9 +23,10 @@ class _EditNotesState extends State<EditNotes> {
         body: Padding(
       padding: const EdgeInsets.only(left: 20, top: 15, right: 20, bottom: 15),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
-            height: 20,
+            height: 22,
           ),
           CustomAppBar(
             title: "Edit Note",
@@ -48,17 +50,23 @@ class _EditNotesState extends State<EditNotes> {
             },
           ),
           const SizedBox(
-            height: 16,
+            height: 8,
           ),
           EditCustomTextField(
+            fontSize: 28,
             hint: "Title",
             onChanged: (value) {
               title = value;
             },
             initialValue: widget.noteModel.title,
           ),
+          Text(
+            DateFormat('MMMM d h:mm a')
+                .format(DateTime.parse(widget.noteModel.date)),
+            style: TextStyle(color: const Color.fromARGB(148, 255, 255, 255)),
+          ),
           const SizedBox(
-            height: 8,
+            height: 12,
           ),
           Expanded(
             child: EditCustomTextField(

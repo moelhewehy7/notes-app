@@ -1,28 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/features/presentation/customwidget/color_item.dart';
 
 import '../../../data/models/note_model.dart';
-
-class ColorItem extends StatelessWidget {
-  const ColorItem({super.key, required this.isActive, required this.color});
-  final bool isActive;
-  final Color color;
-  @override
-  Widget build(BuildContext context) {
-    return isActive
-        ? CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 32,
-            child: CircleAvatar(
-              radius: 30,
-              backgroundColor: color,
-            ),
-          )
-        : CircleAvatar(
-            radius: 30,
-            backgroundColor: color,
-          );
-  }
-}
 
 class EditColorListView extends StatefulWidget {
   const EditColorListView({super.key, required this.noteModel});
@@ -37,14 +16,14 @@ class _ColorListViewState extends State<EditColorListView> {
   late int currentIndex;
   List<Color> noteColors = [
     const Color(0xFF546E7A), // Dark Blue Gray
-    Colors.blueGrey[300]!, // Blue Grey
-    const Color.fromARGB(255, 132, 99, 0), // Amber
-    Colors.deepOrange[400]!, // Deep Orange
-    Colors.purple[400]!, // Purple
-    Colors.brown[400]!, // Brown
-    Colors.blueGrey[800]!, // Darker shades of Blue Grey
-    Colors.indigo[800]!, // Darker shades of Indigo
-    Colors.red[800]!, // Darker shades of Red
+    const Color(0xFF073A53), // Blue Grey
+    const Color(0xFF846300), // Amber
+    const Color(0xFF823821), // Deep Orange
+    const Color(0xFF86009E), // Purple
+    const Color(0xFF8D6E63), // Brown
+    const Color(0xFF37474F), // Darker shades of Blue Grey
+    const Color(0xFF1E2875), // Darker shades of Indigo
+    const Color(0xFF7B1414), // Darker shades of Red
   ];
   @override
   void initState() {

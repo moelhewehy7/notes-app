@@ -4,9 +4,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:note_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:note_app/features/presentation/customwidget/add_text_form_field.dart';
+import 'package:note_app/features/presentation/customwidget/add_color_list_view.dart';
 import '../../../constants.dart';
 import '../../../data/models/note_model.dart';
-import 'button.dart';
+import 'custom_button.dart';
 
 // ignore: must_be_immutable
 class Noteform extends StatefulWidget {
@@ -62,31 +63,11 @@ class _NoteformState extends State<Noteform> {
           BlocConsumer<AddNotesCubit, AddNotesState>(
             listener: (context, state) {
               if (state is AddNotesSuccss) {
-                // Handle successful note addition (e.g., show success message or navigate)
                 BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    duration: Duration(milliseconds: 800),
-                    content: Text(
-                      'Note added successfully!',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    backgroundColor: Color.fromARGB(255, 48, 48, 48),
-                  ),
-                );
+                showsnackbar(context, text: 'Note added successfully!');
                 Navigator.pop(context);
               } else if (state is AddNotesFailure) {
-                // Handle error (e.g., display error message)
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    duration: const Duration(milliseconds: 800),
-                    content: Text(
-                      state.errmessage,
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                    backgroundColor: const Color.fromARGB(255, 48, 48, 48),
-                  ),
-                );
+                showsnackbar(context, text: state.errmessage);
               }
             },
             builder: (context, state) {
@@ -98,21 +79,7 @@ class _NoteformState extends State<Noteform> {
               } else {
                 return CustomButton(
                   onpressed: () async {
-                    if (formkey.currentState!.validate()) {
-                      formkey.currentState!.save();
-                      var notemodel = NoteModel(
-                        title: title!,
-                        content: content!,
-                        color: BlocProvider.of<AddNotesCubit>(context)
-                            .color
-                            .value, //or note.color = color.value; in add note cubit
-                        date: DateTime.now().toString(),
-                      );
-                      BlocProvider.of<AddNotesCubit>(context)
-                          .addnote(notemodel);
-                    } else {
-                      autovalidate = AutovalidateMode.always;
-                    }
+                    addnotemethod(context);
                   },
                   // Conditionally display a loading indicator if needed
                 );
@@ -126,76 +93,33 @@ class _NoteformState extends State<Noteform> {
       ),
     );
   }
-}
 
-class ColorItem extends StatelessWidget {
-  const ColorItem({super.key, required this.isActive, required this.color});
-  final bool isActive;
-  final Color color;
-  @override
-  Widget build(BuildContext context) {
-    return isActive
-        ? CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 32,
-            child: CircleAvatar(
-              radius: 30,
-              backgroundColor: color,
-            ),
-          )
-        : CircleAvatar(
-            radius: 30,
-            backgroundColor: color,
-          );
+  void addnotemethod(BuildContext context) {
+    if (formkey.currentState!.validate()) {
+      formkey.currentState!.save();
+      var notemodel = NoteModel(
+        title: title!,
+        content: content!,
+        color: BlocProvider.of<AddNotesCubit>(context)
+            .color
+            .value, //or note.color = color.value; in add note cubit
+        date: DateTime.now().toString(),
+      );
+      BlocProvider.of<AddNotesCubit>(context).addnote(notemodel);
+    } else {
+      autovalidate = AutovalidateMode.always;
+    }
   }
-}
 
-class ColorListView extends StatefulWidget {
-  const ColorListView({super.key});
-
-  @override
-  State<ColorListView> createState() => _ColorListViewState();
-}
-
-int currentIndex = 0;
-List<Color> noteColors = [
-  const Color(0xFF546E7A), // Dark Blue Gray
-  const Color(0xFF073A53), // Blue Grey
-  const Color(0xFF846300), // Amber
-  const Color(0xFFFF7043), // Deep Orange
-  const Color(0xFFAB47BC), // Purple
-  const Color(0xFF8D6E63), // Brown
-  const Color(0xFF37474F), // Darker shades of Blue Grey
-  const Color.fromARGB(255, 30, 40, 117), // Darker shades of Indigo
-  const Color(0xFFC62828), // Darker shades of Red
-];
-
-class _ColorListViewState extends State<ColorListView> {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 32 * 2,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: noteColors.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: GestureDetector(
-              onTap: () {
-                currentIndex = index;
-                BlocProvider.of<AddNotesCubit>(context).color =
-                    noteColors[index];
-                setState(() {});
-              },
-              child: ColorItem(
-                color: noteColors[index],
-                isActive: currentIndex ==
-                    index, //means it will be white if index numbuer= current one
-              ),
-            ),
-          );
-        },
+  void showsnackbar(BuildContext context, {required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(milliseconds: 800),
+        content: Text(
+          text,
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: const Color.fromARGB(255, 48, 48, 48),
       ),
     );
   }

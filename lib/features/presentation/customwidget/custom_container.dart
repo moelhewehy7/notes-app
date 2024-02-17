@@ -9,11 +9,10 @@ import 'custome_icon.dart';
 
 // ignore: must_be_immutable
 class CustomContainer extends StatelessWidget {
-  CustomContainer({super.key, required this.height, required this.note});
+  const CustomContainer({super.key, required this.height, required this.note});
 
   final double height;
   final NoteModel note;
-  late String text = note.title;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class CustomContainer extends StatelessWidget {
           color: Color(note.color),
         ),
         height: height,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,13 +35,18 @@ class CustomContainer extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  overflow: TextOverflow.ellipsis,
-
-                  text.length <= 12 ? text : '${text.substring(0, 12)}...',
-                  // Ensure only a single line is displayed
-                  style: const TextStyle(
-                    fontSize: 16,
+                Expanded(
+                  child: Text(
+                    overflow: TextOverflow.ellipsis, note.title,
+                    // Expanded widget around the Text widget to ensure
+                    //the text takes up all available space in the row and to prevent overflow errors.
+                    //or we could do that without expanded
+                    //late String text = note.title;
+                    // text.length <= 12 ? text : '${text.substring(0, 12)}...',,
+                    // Ensure only a single line is displayed
+                    style: const TextStyle(
+                      fontSize: 18,
+                    ),
                   ),
                 ),
                 CustomIcon(
@@ -54,7 +58,7 @@ class CustomContainer extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 4), // Adjust spacing as needed
+            // Adjust spacing as needed
             Padding(
               padding: const EdgeInsets.only(right: 10),
               child: Text(
@@ -62,12 +66,12 @@ class CustomContainer extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   color: Color.fromARGB(160, 255, 255, 255),
                 ),
               ),
             ),
-            const SizedBox(height: 8), // Adjust spacing as needed
+            // Adjust spacing as needed
             Text(DateFormat('MMM d h:mm a').format(DateTime.parse(note.date))),
           ],
         ),

@@ -13,19 +13,17 @@ class CustomIcon extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          // Adjust the width and height here
+          elevation: 5,
           padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
-          backgroundColor: Colors.white.withOpacity(.05),
+          backgroundColor: const Color(0xFFFFFFFF).withOpacity(.05),
         ),
-        child: Center(
-          child: Icon(
-            icon,
-            size: 22,
-            color: Colors.white,
-          ),
+        child: Icon(
+          icon,
+          size: 18,
+          color: Colors.white,
         ),
       ),
     );
