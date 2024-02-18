@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:Notes/cubits/notes_cubit/notes_cubit.dart';
 import 'package:intl/intl.dart';
 
+import '../../../constants.dart';
 import '../../../data/models/note_model.dart';
 import '../views/editnotes.dart';
 import 'custome_icon.dart';
@@ -51,8 +52,7 @@ class CustomContainer extends StatelessWidget {
                 ),
                 CustomIcon(
                   onPressed: () {
-                    note.delete();
-                    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                    showDeleteConfirmationDialog(context);
                   },
                   icon: Icons.delete,
                 ),
@@ -76,6 +76,36 @@ class CustomContainer extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  void showDeleteConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirm Delete'),
+          content: Text('Are you sure you want to delete this note'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                note.delete();
+                BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                Navigator.of(context).pop(); // Close the dialog
+                // Show a SnackBar to confirm deletion
+                showsnackbar(context, text: 'Item deleted');
+              },
+              child: Text('Delete'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

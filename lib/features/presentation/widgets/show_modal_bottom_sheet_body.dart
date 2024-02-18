@@ -21,6 +21,7 @@ class ShowModalBottomSheetBody extends StatelessWidget {
                     right: 16,
                     left: 16,
                     bottom: MediaQuery.of(context).viewInsets.bottom),
+                //viewInsets.bottom = keyboard height
                 child: const SingleChildScrollView(child: Noteform())),
           );
         },

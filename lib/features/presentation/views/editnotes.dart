@@ -35,7 +35,8 @@ class _EditNotesState extends State<EditNotes> {
               widget.noteModel.title = title ?? widget.noteModel.title;
               widget.noteModel.content = content ?? widget.noteModel.content;
               widget.noteModel.save();
-              BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+              BlocProvider.of<NotesCubit>(context)
+                  .fetchAllNotes(); // to refresh data
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   duration: Duration(milliseconds: 800),
