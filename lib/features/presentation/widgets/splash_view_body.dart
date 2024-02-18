@@ -34,41 +34,24 @@ class _SplashViewbodyState extends State<SplashViewbody>
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.only(),
       child: Center(
-        child: Container(
-          height: screenHeight,
-          width: screenWidth,
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Colors.white, Colors.white,
-
-              Color(0xFFBAB1A6), // Ending color
-            ],
-            // Set gradient stops
-          )),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              AnimatedBuilder(
-                  animation: fadeAnimation,
-                  builder: (BuildContext context, Widget? child) {
-                    return Opacity(
-                      opacity: fadeAnimation.value,
-                      child: Image.asset(
-                        "assests/images/note_logo.png",
-                        scale: 3,
-                      ),
-                    );
-                  })
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AnimatedBuilder(
+                animation: fadeAnimation,
+                builder: (BuildContext context, Widget? child) {
+                  return Opacity(
+                    opacity: fadeAnimation.value,
+                    child: Image.asset(
+                      "assests/images/note_logo.png",
+                      scale: 3,
+                    ),
+                  );
+                })
+          ],
         ),
       ),
     );
