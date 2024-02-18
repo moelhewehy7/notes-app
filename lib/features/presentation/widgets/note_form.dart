@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:note_app/cubits/add_note_cubit/add_note_cubit.dart';
-import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
-import 'package:note_app/features/presentation/customwidget/add_text_form_field.dart';
-import 'package:note_app/features/presentation/customwidget/add_color_list_view.dart';
+import 'package:Notes/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:Notes/cubits/notes_cubit/notes_cubit.dart';
+import 'package:Notes/features/presentation/widgets/add_text_form_field.dart';
+import 'package:Notes/features/presentation/widgets/add_color_list_view.dart';
 import '../../../constants.dart';
 import '../../../data/models/note_model.dart';
 import 'custom_button.dart';

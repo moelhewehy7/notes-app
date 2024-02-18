@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:note_app/constants.dart';
+import 'package:Notes/constants.dart';
 
 import '../../data/models/note_model.dart';
 

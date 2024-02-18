@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
-import 'package:note_app/features/presentation/views/home_page.dart';
-import 'package:note_app/features/presentation/views/simpleblocobserver.dart';
+import 'package:Notes/cubits/notes_cubit/notes_cubit.dart';
+import 'package:Notes/features/presentation/views/simpleblocobserver.dart';
 
 import 'constants.dart';
 import 'data/models/note_model.dart';
+import 'features/presentation/views/splash_view.dart';
 
 void main() async {
   await Hive.initFlutter(); //dontforget hive flutter not just hive
@@ -27,7 +27,7 @@ class NoteApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,
-        home: const HomePage(),
+        home: const SplashView(),
       ),
     );
   }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/features/presentation/customwidget/color_item.dart';
-import 'package:note_app/features/presentation/customwidget/editcolorlistview.dart';
+import 'package:Notes/features/presentation/widgets/color_item.dart';
 
 import '../../../cubits/add_note_cubit/add_note_cubit.dart';
 

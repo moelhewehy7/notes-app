@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
-import 'package:note_app/features/presentation/customwidget/custom_appbar.dart';
-import 'package:note_app/features/presentation/customwidget/edit_text_form_field.dart';
+import 'package:Notes/cubits/notes_cubit/notes_cubit.dart';
+import 'package:Notes/features/presentation/widgets/custom_appbar.dart';
+import 'package:Notes/features/presentation/widgets/edit_text_form_field.dart';
 import '../../../data/models/note_model.dart';
-import '../customwidget/editcolorlistview.dart';
+import '../widgets/editcolorlistview.dart';
 
 class EditNotes extends StatefulWidget {
   const EditNotes({super.key, required this.noteModel});
@@ -63,7 +63,7 @@ class _EditNotesState extends State<EditNotes> {
           Text(
             DateFormat('MMMM d h:mm a')
                 .format(DateTime.parse(widget.noteModel.date)),
-            style: TextStyle(color: const Color.fromARGB(148, 255, 255, 255)),
+            style: const TextStyle(color: Color(0x93FFFFFF)),
           ),
           const SizedBox(
             height: 12,

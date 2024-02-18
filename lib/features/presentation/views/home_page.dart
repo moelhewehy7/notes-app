@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
-import 'package:note_app/features/presentation/customwidget/show_modal_bottom_sheet_body.dart';
+import 'package:Notes/cubits/notes_cubit/notes_cubit.dart';
+import 'package:Notes/features/presentation/widgets/show_modal_bottom_sheet_body.dart';
 
 import '../../../data/models/note_model.dart';
-import '../customwidget/custom_container.dart';
-import '../customwidget/custom_appbar.dart';
+import '../widgets/custom_container.dart';
+import '../widgets/custom_appbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
             ),
             CustomAppBar(
               title: "Notes",
-              icon: Icons.search,
+              icon: Icons.edit,
               onPressed: () {},
             ),
             BlocBuilder<NotesCubit, NotesState>(
