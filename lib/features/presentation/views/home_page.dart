@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:Notes/cubits/notes_cubit/notes_cubit.dart';
-import 'package:Notes/features/presentation/widgets/show_modal_bottom_sheet_body.dart';
+import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes/features/presentation/widgets/show_modal_bottom_sheet_body.dart';
 
 import '../../../data/models/note_model.dart';
 import '../widgets/custom_container.dart';
@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+    BlocProvider.of<notesCubit>(context).fetchAllnotes();
     super.initState();
   }
 
@@ -51,14 +51,14 @@ class _HomePageState extends State<HomePage> {
               height: 20,
             ),
             CustomAppBar(
-              title: "Notes",
+              title: "notes",
               icon: Icons.edit,
               onPressed: () {},
             ),
-            BlocBuilder<NotesCubit, NotesState>(
+            BlocBuilder<notesCubit, notesState>(
               builder: (context, state) {
                 List<NoteModel> notes =
-                    BlocProvider.of<NotesCubit>(context).notes ?? [];
+                    BlocProvider.of<notesCubit>(context).notes ?? [];
                 return Expanded(
                   child: MasonryGridView.builder(
                     gridDelegate:

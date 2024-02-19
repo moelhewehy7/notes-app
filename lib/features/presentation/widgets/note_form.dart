@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:Notes/cubits/add_note_cubit/add_note_cubit.dart';
-import 'package:Notes/cubits/notes_cubit/notes_cubit.dart';
-import 'package:Notes/features/presentation/widgets/add_text_form_field.dart';
-import 'package:Notes/features/presentation/widgets/add_color_list_view.dart';
+import 'package:notes/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes/features/presentation/widgets/add_text_form_field.dart';
+import 'package:notes/features/presentation/widgets/add_color_list_view.dart';
 import '../../../constants.dart';
 import '../../../data/models/note_model.dart';
 import 'custom_button.dart';
@@ -60,18 +60,18 @@ class _NoteformState extends State<Noteform> {
           const SizedBox(
             height: 15,
           ),
-          BlocConsumer<AddNotesCubit, AddNotesState>(
+          BlocConsumer<AddnotesCubit, AddnotesState>(
             listener: (context, state) {
-              if (state is AddNotesSuccss) {
-                BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+              if (state is AddnotesSuccss) {
+                BlocProvider.of<notesCubit>(context).fetchAllnotes();
                 showsnackbar(context, text: 'Note added successfully!');
                 Navigator.pop(context);
-              } else if (state is AddNotesFailure) {
+              } else if (state is AddnotesFailure) {
                 showsnackbar(context, text: state.errmessage);
               }
             },
             builder: (context, state) {
-              if (state is AddNotesLoading) {
+              if (state is AddnotesLoading) {
                 return SpinKitCircle(
                   color: kcollor,
                   size: 20.0,
@@ -100,12 +100,12 @@ class _NoteformState extends State<Noteform> {
       var notemodel = NoteModel(
         title: title!,
         content: content!,
-        color: BlocProvider.of<AddNotesCubit>(context)
+        color: BlocProvider.of<AddnotesCubit>(context)
             .color
             .value, //or note.color = color.value; in add note cubit
         date: DateTime.now().toString(),
       );
-      BlocProvider.of<AddNotesCubit>(context).addnote(notemodel);
+      BlocProvider.of<AddnotesCubit>(context).addnote(notemodel);
     } else {
       autovalidate = AutovalidateMode.always;
     }

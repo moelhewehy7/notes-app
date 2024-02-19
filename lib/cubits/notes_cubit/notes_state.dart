@@ -1,7 +1,7 @@
 part of 'notes_cubit.dart';
 
-sealed class NotesState {}
+sealed class notesState {}
 
-final class NotesInitial extends NotesState {}
+final class notesInitial extends notesState {}
 
-final class NotesSuccss extends NotesState {}
+final class notesSuccss extends notesState {}

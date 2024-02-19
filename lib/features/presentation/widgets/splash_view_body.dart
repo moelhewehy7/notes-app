@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Notes/features/presentation/views/home_page.dart';
+import 'package:notes/features/presentation/views/home_page.dart';
 
 class SplashViewbody extends StatefulWidget {
   const SplashViewbody({super.key});

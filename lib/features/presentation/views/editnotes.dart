@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:Notes/cubits/notes_cubit/notes_cubit.dart';
-import 'package:Notes/features/presentation/widgets/custom_appbar.dart';
-import 'package:Notes/features/presentation/widgets/edit_text_form_field.dart';
+import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes/features/presentation/widgets/custom_appbar.dart';
+import 'package:notes/features/presentation/widgets/edit_text_form_field.dart';
 import '../../../data/models/note_model.dart';
 import '../widgets/editcolorlistview.dart';
 
-class EditNotes extends StatefulWidget {
-  const EditNotes({super.key, required this.noteModel});
+class Editnotes extends StatefulWidget {
+  const Editnotes({super.key, required this.noteModel});
   final NoteModel noteModel;
   @override
-  State<EditNotes> createState() => _EditNotesState();
+  State<Editnotes> createState() => _EditnotesState();
 }
 
 String? title, content;
 
-class _EditNotesState extends State<EditNotes> {
+class _EditnotesState extends State<Editnotes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +35,8 @@ class _EditNotesState extends State<EditNotes> {
               widget.noteModel.title = title ?? widget.noteModel.title;
               widget.noteModel.content = content ?? widget.noteModel.content;
               widget.noteModel.save();
-              BlocProvider.of<NotesCubit>(context)
-                  .fetchAllNotes(); // to refresh data
+              BlocProvider.of<notesCubit>(context)
+                  .fetchAllnotes(); // to refresh data
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   duration: Duration(milliseconds: 800),

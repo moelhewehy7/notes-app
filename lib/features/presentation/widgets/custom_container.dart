@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:Notes/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
 import 'package:intl/intl.dart';
 
 import '../../../constants.dart';
@@ -20,7 +20,7 @@ class CustomContainer extends StatelessWidget {
     return GestureDetector(
       onTap: () =>
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-        return EditNotes(noteModel: note);
+        return Editnotes(noteModel: note);
       })),
       child: Container(
         decoration: BoxDecoration(
@@ -84,24 +84,24 @@ class CustomContainer extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Delete'),
-          content: Text('Are you sure you want to delete this note'),
+          title: const Text('Confirm Delete'),
+          content: const Text('Are you sure you want to delete this note'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             ElevatedButton(
               onPressed: () {
                 note.delete();
-                BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                BlocProvider.of<notesCubit>(context).fetchAllnotes();
                 Navigator.of(context).pop(); // Close the dialog
                 // Show a SnackBar to confirm deletion
                 showsnackbar(context, text: 'Item deleted');
               },
-              child: Text('Delete'),
+              child: const Text('Delete'),
             ),
           ],
         );

@@ -1,26 +1,26 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:Notes/constants.dart';
+import 'package:notes/constants.dart';
 
 import '../../data/models/note_model.dart';
 
 part 'add_note_state.dart';
 
-class AddNotesCubit extends Cubit<AddNotesState> {
-  AddNotesCubit() : super(AddNotesInitial());
+class AddnotesCubit extends Cubit<AddnotesState> {
+  AddnotesCubit() : super(AddnotesInitial());
   Color color = const Color(0xFF546E7A);
   addnote(NoteModel note) async {
-    emit(AddNotesLoading());
+    emit(AddnotesLoading());
     await Future.delayed(const Duration(
         milliseconds: 1000)); //to assure that loading has a chance to display
 
     try {
       var notebox = Hive.box<NoteModel>(knotesbox);
       await notebox.add(note);
-      emit(AddNotesSuccss());
+      emit(AddnotesSuccss());
     } on Exception catch (e) {
-      emit(AddNotesFailure(errmessage: e.toString()));
+      emit(AddnotesFailure(errmessage: e.toString()));
     }
   }
 }
