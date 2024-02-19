@@ -99,7 +99,7 @@ class CustomContainer extends StatelessWidget {
                 BlocProvider.of<notesCubit>(context).fetchAllnotes();
                 Navigator.of(context).pop(); // Close the dialog
                 // Show a SnackBar to confirm deletion
-                showsnackbar(context, text: 'Item deleted');
+                showsnackbar(context, text: 'Note deleted');
               },
               child: const Text('Delete'),
             ),

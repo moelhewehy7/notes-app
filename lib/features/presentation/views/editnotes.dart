@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:notes/constants.dart';
 import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes/features/presentation/widgets/custom_appbar.dart';
 import 'package:notes/features/presentation/widgets/edit_text_form_field.dart';
 import '../../../data/models/note_model.dart';
-import '../widgets/editcolorlistview.dart';
+import '../widgets/edit_color_list_view.dart';
 
 class Editnotes extends StatefulWidget {
   const Editnotes({super.key, required this.noteModel});
@@ -37,16 +38,7 @@ class _EditnotesState extends State<Editnotes> {
               widget.noteModel.save();
               BlocProvider.of<notesCubit>(context)
                   .fetchAllnotes(); // to refresh data
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  duration: Duration(milliseconds: 800),
-                  content: Text(
-                    'Note updated successfully!',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  backgroundColor: Color.fromARGB(255, 48, 48, 48),
-                ),
-              );
+              showsnackbar(context, text: "Note updated successfully!");
               Navigator.pop(context);
             },
           ),

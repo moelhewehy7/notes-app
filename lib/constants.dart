@@ -5,7 +5,7 @@ Color kcollor = const Color(0xff62FCD7);
 void showsnackbar(BuildContext context, {required String text}) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      duration: const Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 900),
       content: Text(
         text,
         style: const TextStyle(color: Colors.white),

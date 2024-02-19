@@ -48,10 +48,10 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(
-              height: 20,
+              height: 22,
             ),
             CustomAppBar(
-              title: "notes",
+              title: "Notes",
               icon: Icons.edit,
               onPressed: () {},
             ),

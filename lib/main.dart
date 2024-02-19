@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes/simpleblocobserver.dart';
-
 import 'constants.dart';
 import 'data/models/note_model.dart';
 import 'features/presentation/views/splash_view.dart';
@@ -32,4 +31,3 @@ class NoteApp extends StatelessWidget {
     );
   }
 }
-// /*  */
