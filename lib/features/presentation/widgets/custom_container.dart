@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
 import 'package:intl/intl.dart';
-
-import '../../../constants.dart';
+import 'package:notes/helper/show_delete_confirmation.dart';
 import '../../../data/models/note_model.dart';
 import '../views/editnotes.dart';
 import 'custome_icon.dart';
 
 // ignore: must_be_immutable
 class CustomContainer extends StatelessWidget {
-  const CustomContainer({super.key, required this.height, required this.note});
-
-  final double height;
+  const CustomContainer({super.key, required this.note});
   final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () =>
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
@@ -27,7 +23,6 @@ class CustomContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           color: Color(note.color),
         ),
-        height: height,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,18 +36,13 @@ class CustomContainer extends StatelessWidget {
                     overflow: TextOverflow.ellipsis, note.title,
                     // Expanded widget around the Text widget to ensure
                     //the text takes up all available space in the row and to prevent overflow errors.
-                    //or we could do that without expanded
-                    //late String text = note.title;
-                    // text.length <= 12 ? text : '${text.substring(0, 12)}...',,
-                    // Ensure only a single line is displayed
                     style: const TextStyle(
-                      fontSize: 18,
-                    ),
+                        fontSize: 20, fontWeight: FontWeight.w500),
                   ),
                 ),
                 CustomIcon(
                   onPressed: () {
-                    showDeleteConfirmationDialog(context);
+                    showDeleteConfirmationDialog(context, notemodel: note);
                   },
                   icon: Icons.delete,
                 ),
@@ -60,52 +50,25 @@ class CustomContainer extends StatelessWidget {
             ),
             // Adjust spacing as needed
             Padding(
-              padding: const EdgeInsets.only(right: 10),
+              padding: EdgeInsets.only(right: width * .15, bottom: 2),
               child: Text(
                 note.content,
                 overflow: TextOverflow.ellipsis,
-                maxLines: 3,
+                maxLines: 5,
                 style: const TextStyle(
                   fontSize: 18,
-                  color: Color.fromARGB(160, 255, 255, 255),
+                  color: Color.fromARGB(239, 224, 224, 224),
                 ),
               ),
             ),
             // Adjust spacing as needed
-            Text(DateFormat('MMM d h:mm a').format(DateTime.parse(note.date))),
+            Text(
+              DateFormat('MMM d h:mm a').format(DateTime.parse(note.date)),
+              style: const TextStyle(color: Color.fromARGB(221, 199, 199, 199)),
+            ),
           ],
         ),
       ),
-    );
-  }
-
-  void showDeleteConfirmationDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Confirm Delete'),
-          content: const Text('Are you sure you want to delete this note'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: const Text('Cancel'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                note.delete();
-                BlocProvider.of<notesCubit>(context).fetchAllnotes();
-                Navigator.of(context).pop(); // Close the dialog
-                // Show a SnackBar to confirm deletion
-                showsnackbar(context, text: 'Note deleted');
-              },
-              child: const Text('Delete'),
-            ),
-          ],
-        );
-      },
     );
   }
 }

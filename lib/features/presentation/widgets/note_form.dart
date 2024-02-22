@@ -63,7 +63,7 @@ class _NoteformState extends State<Noteform> {
           BlocConsumer<AddnotesCubit, AddnotesState>(
             listener: (context, state) {
               if (state is AddnotesSuccss) {
-                BlocProvider.of<notesCubit>(context).fetchAllnotes();
+                BlocProvider.of<NotesCubit>(context).fetchAllnotes();
                 showsnackbar(context, text: 'Note added successfully!');
                 Navigator.pop(context);
               } else if (state is AddnotesFailure) {

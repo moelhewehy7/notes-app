@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:notes/constants.dart';
 import 'package:notes/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes/features/presentation/widgets/custom_appbar.dart';
 import 'package:notes/features/presentation/widgets/edit_text_form_field.dart';
+import 'package:notes/helper/show_snackbar.dart';
 import '../../../data/models/note_model.dart';
 import '../widgets/edit_color_list_view.dart';
 
@@ -36,7 +36,7 @@ class _EditnotesState extends State<Editnotes> {
               widget.noteModel.title = title ?? widget.noteModel.title;
               widget.noteModel.content = content ?? widget.noteModel.content;
               widget.noteModel.save();
-              BlocProvider.of<notesCubit>(context)
+              BlocProvider.of<NotesCubit>(context)
                   .fetchAllnotes(); // to refresh data
               showsnackbar(context, text: "Note updated successfully!");
               Navigator.pop(context);
