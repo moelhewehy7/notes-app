@@ -8,9 +8,9 @@ A simple note-taking app with features to add, edit, and delete notes. Users can
 
 ## Installation
 
-1. Clone the repository
+1. Clone the repository 
 2. Run `flutter pub get` to install dependencies
-3. Run the app on a device or emulator using `flutter run`
+3. Run the app on a device or emulator using `flutter run` .
 
 ## Usage
 
