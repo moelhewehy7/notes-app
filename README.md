@@ -2,8 +2,8 @@
 
 A simple note-taking app with features to add, edit, and delete notes. Users can customize note colors and the entire note content.
 
-<img src="https://github.com/moelhewehy7/notes-app/assets/130074772/4e017abd-0884-4c98-bad4-0d29122e32ff" alt="Image 1" height="150" width="300">
-<img src="https://github.com/moelhewehy7/notes-app/assets/130074772/19f0e418-2bc6-418e-a27b-691b1e8ee89b" alt="Image 2" height="150" width="300">
+<img src="https://github.com/moelhewehy7/notes-app/assets/130074772/4e017abd-0884-4c98-bad4-0d29122e32ff" alt="Image 1" height="50" width="400">
+<img src="https://github.com/moelhewehy7/notes-app/assets/130074772/19f0e418-2bc6-418e-a27b-691b1e8ee89b" alt="Image 2" height="50 width="400">
 
 
 ## Installation
